@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BME Learn - Biomedical Engineering</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header>
+
+        <div class="logo">
+            🧬 BME Learn
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#topics">Topics</a>
+            <a href="#quiz">Quiz</a>
+            <a href="#about">About</a>
+        </nav>
+
+    </header>
+
+
+    <!-- Hero -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <span class="tag">
+                BIOMEDICAL ENGINEERING
+            </span>
+
+            <h1>
+                Learn Biomedical Engineering
+                <span>Smarter.</span>
+            </h1>
+
+            <p>
+                Explore medical devices, biomedical sensors,
+                ECG, imaging systems and more through simple
+                learning modules.
+            </p>
+
+            <a href="#topics" class="hero-btn">
+                Start Learning 🚀
+            </a>
+
+        </div>
+
+        <div class="hero-icon">
+            🫀
+        </div>
+
+    </section>
+
+
+    <!-- Topics -->
+
+    <section class="section" id="topics">
+
+        <h2>📚 Learning Topics</h2>
+
+        <p class="section-subtitle">
+            Choose a topic and start exploring.
+        </p>
+
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="🔍 Search BME topics..."
+                onkeyup="searchTopics()"
+            >
+
+        </div>
+
+
+        <div class="topic-grid" id="topicGrid">
+
+
+            <div class="topic-card">
+
+                <div class="topic-icon">❤️</div>
+
+                <h3>ECG</h3>
+
+                <p>
+                    Learn how an electrocardiogram records
+                    the electrical activity of the heart.
+                </p>
+
+                <button onclick="showTopic('ECG')">
+                    Learn More
+                </button>
+
+            </div>
+
+
+            <div class="topic-card">
+
+                <div class="topic-icon">🫁</div>
+
+                <h3>Respiratory System</h3>
+
+                <p>
+                    Understand respiratory measurements
+                    and biomedical monitoring.
+                </p>
+
+                <button onclick="showTopic('Respiratory System')">
+                    Learn More
+                </button>
+
+            </div>
+
+
+            <div class="topic-card">
+
+                <div class="topic-icon">🧠</div>
+
+                <h3>Biosensors</h3>
+
+                <p>
+                    Discover how biological signals can be
+                    detected using sensors.
+                </p>
+
+                <button onclick="showTopic('Biosensors')">
+                    Learn More
+                </button>
+
+            </div>
+
+
+            <div class="topic-card">
+
+                <div class="topic-icon">🩻</div>
+
+                <h3>Medical Imaging</h3>
+
+                <p>
+                    Explore technologies such as X-ray,
+                    CT and MRI.
+                </p>
+
+                <button onclick="showTopic('Medical Imaging')">
+                    Learn More
+                </button>
+
+            </div>
+
+
+            <div class="topic-card">
+
+                <div class="topic-icon">🦿</div>
+
+                <h3>Prosthetics</h3>
+
+                <p>
+                    Learn the fundamentals of artificial
+                    limbs and assistive devices.
+                </p>
+
+                <button onclick="showTopic('Prosthetics')">
+                    Learn More
+                </button>
+
+            </div>
+
+
+            <div class="topic-card">
+
+                <div class="topic-icon">📟</div>
+
+                <h3>Patient Monitoring</h3>
+
+                <p>
+                    Understand monitoring of vital signs
+                    using biomedical equipment.
+                </p>
+
+                <button onclick="showTopic('Patient Monitoring')">
+                    Learn More
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Topic Popup -->
+
+    <div id="topicModal" class="modal">
+
+        <div class="modal-content">
+
+            <button class="close" onclick="closeTopic()">
+                ×
+            </button>
+
+            <h2 id="modalTitle"></h2>
+
+            <p id="modalText"></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Progress -->
+
+    <section class="progress-section">
+
+        <h2>📊 Your Learning Progress</h2>
+
+        <div class="progress-box">
+
+            <div class="progress-info">
+
+                <span>Topics Completed</span>
+
+                <span>
+                    <b id="progressNumber">0</b>/6
+                </span>
+
+            </div>
+
+            <div class="progress-bar">
+
+                <div
+                    id="progressFill"
+                    class="progress-fill">
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Quiz -->
+
+    <section class="section quiz-section" id="quiz">
+
+        <h2>📝 Quick BME Quiz</h2>
+
+        <div class="quiz-card">
+
+            <h3 id="question">
+                Which instrument records the electrical
+                activity of the heart?
+            </h3>
+
+
+            <div class="options">
+
+                <button onclick="checkAnswer(this, false)">
+                    MRI
+                </button>
+
+                <button onclick="checkAnswer(this, true)">
+                    ECG
+                </button>
+
+                <button onclick="checkAnswer(this, false)">
+                    X-Ray
+                </button>
+
+                <button onclick="checkAnswer(this, false)">
+                    Ultrasound
+                </button>
+
+            </div>
+
+
+            <p id="quizResult"></p>
+
+            <button
+                class="next-btn"
+                onclick="nextQuestion()">
+                Next Question →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- About -->
+
+    <section class="about" id="about">
+
+        <h2>🧬 About BME Learn</h2>
+
+        <p>
+            BME Learn is an educational web application
+            designed to help students understand basic
+            concepts of Biomedical Engineering through
+            simple explanations and interactive quizzes.
+        </p>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <h3>🧬 BME Learn</h3>
+
+        <p>
+            Learn • Explore • Innovate
+        </p>
+
+        <small>
+            Educational project | 2026
+        </small>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
