@@ -1,0 +1,212 @@
+/* Topic Information */
+
+const topicInfo = {
+
+    "ECG":
+        "ECG (Electrocardiogram) is a technique used to record the electrical activity of the heart. It is commonly used to observe heart rhythm and electrical patterns.",
+
+    "Respiratory System":
+        "Biomedical engineers work with technologies that measure respiratory parameters such as breathing rate and oxygen-related measurements.",
+
+    "Biosensors":
+        "Biosensors combine a biological recognition element with a sensor system to detect or measure biological information.",
+
+    "Medical Imaging":
+        "Medical imaging includes technologies such as X-ray, CT, MRI and ultrasound that help produce images of structures inside the body.",
+
+    "Prosthetics":
+        "Biomedical engineering contributes to prosthetic and assistive technologies designed to help people with limb loss or physical disabilities.",
+
+    "Patient Monitoring":
+        "Patient monitoring systems can measure vital signs such as heart rate, blood pressure, oxygen saturation and temperature."
+};
+
+
+/* Show Topic */
+
+function showTopic(topic) {
+
+    document.getElementById("modalTitle")
+        .textContent = topic;
+
+    document.getElementById("modalText")
+        .textContent = topicInfo[topic];
+
+    document.getElementById("topicModal")
+        .style.display = "flex";
+
+}
+
+
+/* Close Topic */
+
+function closeTopic() {
+
+    document.getElementById("topicModal")
+        .style.display = "none";
+
+}
+
+
+/* Search */
+
+function searchTopics() {
+
+    const search =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+    const cards =
+        document.querySelectorAll(".topic-card");
+
+    cards.forEach(card => {
+
+        const text =
+            card.textContent.toLowerCase();
+
+        if (text.includes(search)) {
+
+            card.style.display = "block";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+
+/* Progress */
+
+let completedTopics = 0;
+
+function updateProgress() {
+
+    if (completedTopics < 6) {
+
+        completedTopics++;
+
+        document.getElementById(
+            "progressNumber"
+        ).textContent = completedTopics;
+
+        const percentage =
+            (completedTopics / 6) * 100;
+
+        document.getElementById(
+            "progressFill"
+        ).style.width = percentage + "%";
+    }
+
+}
+
+
+/* Quiz */
+
+let questionNumber = 0;
+
+const questions = [
+
+    {
+        question:
+            "Which instrument records the electrical activity of the heart?",
+
+        options:
+            ["MRI", "ECG", "X-Ray", "Ultrasound"],
+
+        answer: 1
+    },
+
+    {
+        question:
+            "Which technology is commonly used to create images using magnetic fields?",
+
+        options:
+            ["ECG", "MRI", "Thermometer", "Spirometer"],
+
+        answer: 1
+    },
+
+    {
+        question:
+            "What does BME stand for?",
+
+        options:
+            [
+                "Basic Medical Electronics",
+                "Biomedical Engineering",
+                "Biological Machine Engineering",
+                "Bio Mechanical Electronics"
+            ],
+
+        answer: 1
+    }
+
+];
+
+
+function checkAnswer(button, correct) {
+
+    const result =
+        document.getElementById("quizResult");
+
+    if (correct) {
+
+        result.textContent =
+            "✅ Correct! Great job.";
+
+        result.style.color = "#4ade80";
+
+    } else {
+
+        result.textContent =
+            "❌ Not quite. Try again.";
+
+        result.style.color = "#ff7777";
+
+    }
+
+}
+
+
+function nextQuestion() {
+
+    questionNumber++;
+
+    if (questionNumber >= questions.length) {
+
+        questionNumber = 0;
+
+    }
+
+    const q = questions[questionNumber];
+
+    document.getElementById("question")
+        .textContent = q.question;
+
+    const buttons =
+        document.querySelectorAll(".options button");
+
+    buttons.forEach((button, index) => {
+
+        button.textContent = q.options[index];
+
+        button.onclick = function () {
+
+            checkAnswer(
+                this,
+                index === q.answer
+            );
+
+        };
+
+    });
+
+    document.getElementById("quizResult")
+        .textContent = "";
+
+}
